@@ -105,14 +105,25 @@ const salesByWeek = [
         }
     }
 ]
-const outputElement = document.querySelector("#printMeSection")
-salesByWeek.forEach(sale => {
-    for (const entry of Object.entries(sale.vehicle)){
-   let HTMLstring = entry[0] + ":" + entry[1]
-   let fixedHTMLString = `<div>${sale.sales_agent.first_name} ${sale.sales_agent.last_name}</div>${HTMLstring}<h3>${sale.gross_profit}</h3>`
-   outputElement.innerHTML += fixedHTMLString
-}})
+const outputElement = document.querySelector(".printMeSection")
 
+// salesByWeek.forEach(sale => {
+//     for (const entry of Object.entries(sale.vehicle)){
+//         console.log(entry)
+//    return htmlString = `<h3>${sale.sales_agent.first_name} ${sale.sales_agent.last_name}</h3> <h4>${sale.gross_profit}</h4> <div>${entry[0]} : ${entry[1]}</div>`
+
+// }
+
+// })
+outputElement.innerHTML += `<h1>Weekly Sales!</h1>`
+
+salesByWeek.forEach(sale => {
+    outputElement.innerHTML += `<h2>${sale.sales_agent.first_name}  ${sale.sales_agent.last_name}</h2>`
+    for (const entry of Object.entries(sale.vehicle)) {
+        outputElement.innerHTML += `<div>${entry[0]} : ${entry[1]}</div>`
+    }
+    outputElement.innerHTML += `<h3>Profit: ${sale.gross_profit}</h3}`
+})
 
 
 
